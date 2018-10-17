@@ -1,14 +1,14 @@
 ---
+title: 使用webpack打包react项目
 layout: post
-title:  "使用webpack打包react项目"
 categories: javascript
 tags: 基础
-published: true
+published: false
 ---
 
 ## react
 
-> main.js
+* main.js
 
 ```
 var React = require('react');

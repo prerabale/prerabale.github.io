@@ -1,9 +1,9 @@
 ---
+title: 模块规范
 layout: post
-title:  "模块规范"
 categories: javascript
 tags: 基础
-published: true
+published: false
 ---
 
 ### [CommonJS](http://wiki.commonjs.org/wiki/CommonJS)

@@ -1,9 +1,9 @@
 ---
+title: Javascript-内存泄漏
 layout: post
-title:  "Javascript-内存泄漏"
 categories: javascript
 tags: 进阶
-published: true
+published: false
 ---
 
 Javascript中的数据类型分为[原始类型](#primitive-type)和[引用类型](#reference-type)两种
