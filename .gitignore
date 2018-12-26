@@ -1,6 +1,4 @@
-_site
-.sass-cache
-.jekyll-metadata
+.idea/
+db.json
 .DS_Store
-.idea
-node_modules
+node_modules/

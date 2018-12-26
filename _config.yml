@@ -8,7 +8,7 @@ subtitle: 个人站
 description: 欢迎来到我的个人站.
 keywords: web / 致力全栈
 author: 吴良伟
-language: zh-CN
+language: zh-Hans
 timezone: Asia/Shanghai
 
 # URL
@@ -73,9 +73,15 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+#theme: landscape
+theme: next
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type:
+
+#admin:
+#  username: myfavoritename
+#  password_hash: be121740bf988b2225a313fa1f107ca1
+#  secret: a secret something
