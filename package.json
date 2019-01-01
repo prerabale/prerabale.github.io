@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "start": "hexo server",
-    "deploy": "hexo deploy"
+    "deploy": "hexo deploy",
+    "build": "nodeppt generate slides/ public/slides -a && hexo generate",
+    "ppt": "nodeppt start -p 8090 -d source/slides/"
   },
   "hexo": {
     "version": "3.7.1"
