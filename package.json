@@ -5,7 +5,10 @@
   "scripts": {
     "start": "hexo server",
     "deploy": "hexo deploy",
-    "build": "nodeppt generate slides/ public/slides -a && hexo generate",
+    "build:all": "hexo clean && npm run build && npm run build:ppt",
+    "clean":"rm -rf public",
+    "build": "hexo generate",
+    "build:ppt":"nodeppt generate slides/ public/slides -a",
     "ppt": "nodeppt start -p 8090 -d source/slides/"
   },
   "hexo": {

@@ -9,7 +9,7 @@ tags:
 
 结语：我没有生产水，只是大自然的搬运工。
 
-- Haskell(是一种标准化的，通用的纯函数编程语言，有非限定性语义和强静态类型) {:&.flexbox.vleft.moveIn}
+- Haskell(是一种标准化的，通用的纯函数编程语言，有非限定性语义和强静态类型)
 - 图解 Monad
 - Functors, Applicatives, And Monads In Pictures
 - JS 函数式编程指南
