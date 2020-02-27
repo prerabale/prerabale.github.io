@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>prerabale</title>
+  
+  <subtitle>学而时习之</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://prerabale.github.io/"/>
+  <updated>2020-02-26T17:09:53.698Z</updated>
+  <id>http://prerabale.github.io/</id>
+  
+  <author>
+    <name>prerabale</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Node.js 源码调试</title>
+    <link href="http://prerabale.github.io/2019/04/19/node-js-yuan-ma-diao-shi/"/>
+    <id>http://prerabale.github.io/2019/04/19/node-js-yuan-ma-diao-shi/</id>
+    <published>2019-04-19T08:46:00.000Z</published>
+    <updated>2020-02-26T17:09:53.698Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;任何信息的价值都有时效性和适用性，本文写时 &lt;a href=&quot;https://nodejs.org&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Node.js&lt;/a&gt; 的最新发行版是
+        
+      
+    
+    </summary>
+    
+    
+      <category term="JS" scheme="http://prerabale.github.io/categories/JS/"/>
+    
+    
+      <category term="Node.js" scheme="http://prerabale.github.io/tags/Node-js/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Monad</title>
+    <link href="http://prerabale.github.io/2018/12/26/monad/"/>
+    <id>http://prerabale.github.io/2018/12/26/monad/</id>
+    <published>2018-12-26T07:11:05.000Z</published>
+    <updated>2020-02-26T11:02:26.327Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;文章尚在整理中，可以先查看本文章的&lt;a href=&quot;/slides/monad.html&quot;&gt;ppt&lt;/a&gt;。&lt;/p&gt;
+&lt;h2 id=&quot;附录&quot;&gt;&lt;a href=&quot;#附录&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+</feed>
