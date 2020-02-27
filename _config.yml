@@ -4,11 +4,11 @@
 
 # Site
 title: prerabale
-subtitle: 学习笔记
+subtitle: 学而时习之
 description: It be it will be.
 keywords: web / 致力全栈
 author: prerabale
-language: zh-Hans
+language: zh-CN
 timezone: Asia/Shanghai
 
 # URL
@@ -39,10 +39,7 @@ post_asset_folder: false
 relative_link: false
 future: true
 highlight:
-  enable: true
-  line_number: true
-  auto_detect: false
-  tab_replace:
+  enable: false
 
 # Home page setting
 # path: Root path for your blogs index page. (default = '')
@@ -73,8 +70,9 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-#theme: landscape
-theme: next
+# theme: landscape
+#theme: next
+theme: matery
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
@@ -90,3 +88,39 @@ deploy:
 
 # Comment
 disqus_shortname: prerabale
+
+# 代码高亮
+prism_plugin:
+  mode: 'preprocess'    # realtime/preprocess
+  theme: 'tomorrow'
+  line_number: true    # default false
+  custom_css:
+
+# 搜索
+search:
+  path: search.xml
+  field: post
+
+# 永链文章转拼音
+permalink_pinyin:
+  enable: true
+  separator: '-' # default: '-'
+
+# 文章支持 emoji
+githubEmojis:
+  enable: true
+  className: github-emoji
+  inject: true
+  styles:
+  customEmojis:
+
+# 支持订阅
+feed:
+  type: atom
+  path: atom.xml
+  limit: 20
+  hub:
+  content:
+  content_limit: 140
+  content_limit_delim: ' '
+  order_by: -date

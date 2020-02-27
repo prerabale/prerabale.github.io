@@ -33,7 +33,7 @@ date: 2019-04-19 16:46:00
 
 修改 `JS` 源码入口文件(`./lib/internal/bootstrap/node.js`)文件中的内容，在头部加入 `debugger`。
 
-```js ./lib/internal/bootstrap/node.js
+```js
 'use strict';
 debugger; // <<--- 在这里加入 debugger;
 // This file is compiled as if it's wrapped in a function with arguments
@@ -57,7 +57,7 @@ Node.js 使用 make 管理项目，开发者们准备了 configure 文件，我�
 
 完整的命令如下：
 
-```bash build.sh
+```bash
 #!/bin/bash
 
 ./configure --debug
@@ -82,7 +82,7 @@ chmod +x build.sh
 创建一个用于调试的项目/文件，里面随便写上一些什么，当然，你也可以用现成已经有的项目/文件。
 为了方便，我就在 `Node.js` 的源码仓库目录下面创建了一个文件:
 
-```js test.js
+```js
 console.log('hello world');
 ```
 
