@@ -3,11 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "hexo clean && hexo server",
+    "start": "hexo server",
     "deploy": "npm run build:all && hexo deploy",
-    "build:all": "hexo clean && npm run build && npm run build:ppt",
     "clean": "rm -rf public",
-    "build": "hexo generate",
+    "build": "hexo clean && hexo generate",
     "build:ppt": "nodeppt generate slides/ public/slides -a",
     "ppt": "nodeppt start -p 8090 -d source/slides/",
     "theme:update": "rm -rf themes/matery && git clone https://github.com/blinkfox/hexo-theme-matery.git themes/matery"

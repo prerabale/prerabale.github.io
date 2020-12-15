@@ -3,7 +3,7 @@ author: prerabale
 tags:
   - Node.js
 categories:
-  - JS
+  - 前端
 date: 2019-04-19 16:46:00
 ---
 > 任何信息的价值都有时效性和适用性，本文写时 [Node.js](https://nodejs.org) 的最新发行版是 `v11.14.0`，稳定版本是 `v10.15.3`，文中出现的源码均来自 `tag`: `v11.14.0`。使用的电脑环境是：macOs 10.14.2。
@@ -108,6 +108,8 @@ For help, see: https://nodejs.org/en/docs/inspector
 
 > 注意：Visual Studio Code 需要打开一个项目时才能够创建配置文件
 
+![](/images/vscode-debug-setting.png)
+
 在配置文件中填入如下内容：
 
 ```json
@@ -128,7 +130,6 @@ For help, see: https://nodejs.org/en/docs/inspector
 ```
 切记，记得进行保存。回到设置界面选择刚刚配置的 "Attact Program"，然后点击绿色的三角标开始，然后你就可以进入到 `Node.js` 源码中 `JS` 部分的调试了。
 
-![](/images/vscode-debug-setting.png)
 
 之后每次改动你的代码的时候都记得执行以下 `build.sh` 重新执行编译。
 
@@ -150,6 +151,8 @@ For help, see: https://nodejs.org/en/docs/inspector
 点击左侧的蜘蛛标志，进入调试配置界面，然后点击右上角的配置按钮(打开目录下的 `.vscode/launch.json`)
 
 > 注意：Visual Studio Code 需要打开一个目录才能够创建配置文件
+
+![](/images/vscode-debug-setting.png)
 
 在配置文件中填入如下内容：
 
@@ -176,12 +179,16 @@ For help, see: https://nodejs.org/en/docs/inspector
 ```
 切记，记得进行保存。
 
-![](/images/vscode-debug-setting.png)
-
 然后用 IDE 在 `C/C++` 入口文件处 `./src/node_mian.cc` 打上 debugger 标识。
 回到设置界面选择刚刚配置的 "Attact Program"，然后点击绿色的三角标开始，然后你就可以进入到 `Node.js` 源码中 `C/C++` 部分的调试了。
 
 ![](/images/vscode-c-debug.jpg)
+
+##### 问题
+
+如果你在使用的环境是 MacOs 的 Catalina 版本，你可能会遇到 C++ 部分调试的时候 `stopAtEntry` 没有生效的问题，那么你需要看一下这个官方的 issue
+
+[Can't debug on macOS Catalina (LLDB)](https://github.com/microsoft/vscode-cpptools/issues/3829)
 
 
 ## 参考

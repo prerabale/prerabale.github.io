@@ -1,7 +1,7 @@
 title: Monad
-author: 吴良伟
-date: 2018-12-26 15:11:05
-tags:
+tags: []
+categories: []
+date: 2018-12-26 15:11:00
 ---
 文章尚在整理中，可以先查看本文章的[ppt](/slides/monad.html)。
 
