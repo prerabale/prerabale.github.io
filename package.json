@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "hexo server",
-    "deploy": "npm run build:all && hexo deploy",
+    "deploy": "npm run build && hexo deploy",
     "clean": "rm -rf public",
     "build": "hexo clean && hexo generate",
     "build:ppt": "nodeppt generate slides/ public/slides -a",
