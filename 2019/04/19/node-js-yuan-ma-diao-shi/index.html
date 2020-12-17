@@ -13,6 +13,9 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
     <title>Node.js 源码调试 | prerabale</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
@@ -25,10 +28,12 @@
     <link rel="stylesheet" type="text/css" href="/css/my.css">
 
     <script src="/libs/jquery/jquery.min.js"></script>
-    
-<link rel="alternate" href="/atom.xml" title="prerabale" type="application/atom+xml">
+
+<meta name="generator" content="Hexo 5.3.0"><link rel="alternate" href="/atom.xml" title="prerabale" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+
 
 
 <body>
@@ -121,6 +126,7 @@
   </li>
 </ul>
 
+
 <div id="mobile-nav" class="side-nav sidenav">
 
     <div class="mobile-head bg-color">
@@ -209,6 +215,7 @@
     </ul>
 </div>
 
+
         </div>
 
         
@@ -268,8 +275,7 @@
     }
 
     .toc-widget .toc-title {
-        margin: 35px 0 15px 0;
-        padding-left: 17px;
+        padding: 35px 0 15px 17px;
         font-size: 1.5rem;
         font-weight: bold;
         line-height: 1.5rem;
@@ -281,7 +287,7 @@
     }
 
     #toc-content {
-        height: calc(100vh - 250px);
+        padding-bottom: 30px;
         overflow: auto;
     }
 
@@ -302,14 +308,14 @@
     #toc-content .toc-link::before {
         background-color: transparent;
         max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
     }
 
     #toc-content .is-active-link {
         color: #42b983;
-    }
-
-    #toc-content .is-active-link::before {
-        background-color: #42b983;
     }
 
     #floating-toc-btn {
@@ -354,8 +360,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/JS/" class="post-category">
-                                JS
+                            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
+                                前端
                             </a>
                         
                     </div>
@@ -374,14 +380,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-02-27
+                    2020-12-17
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.5k
+                    1.6k
                 </div>
                 
 
@@ -399,25 +405,34 @@
                     </div>
 				
             </div>
-
         </div>
         <hr class="clearfix">
+
+        
+
+        
+        <!-- 代码块折行 -->
+        <style type="text/css">
+            code[class*="language-"], pre[class*="language-"] { white-space: pre-wrap !important; }
+        </style>
+        
+
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <blockquote>
-<p>任何信息的价值都有时效性和适用性，本文写时 <a href="https://nodejs.org" target="_blank" rel="noopener">Node.js</a> 的最新发行版是 <code>v11.14.0</code>，稳定版本是 <code>v10.15.3</code>，文中出现的源码均来自 <code>tag</code>: <code>v11.14.0</code>。使用的电脑环境是：macOs 10.14.2。</p>
+<p>任何信息的价值都有时效性和适用性，本文写时 <a target="_blank" rel="noopener" href="https://nodejs.org">Node.js</a> 的最新发行版是 <code>v11.14.0</code>，稳定版本是 <code>v10.15.3</code>，文中出现的源码均来自 <code>tag</code>: <code>v11.14.0</code>。使用的电脑环境是：macOs 10.14.2。</p>
 </blockquote>
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
 <p>Node.js is a JavaScript runtime built on Chrome’s V8 JavaScript engine. </p>
 </blockquote>
-<p><a href="https://nodejs.org" target="_blank" rel="noopener">Node.js</a> 是基于 <a href="https://github.com/v8/v8" target="_blank" rel="noopener">V8</a> 和 <a href="https://github.com/libuv/libuv" target="_blank" rel="noopener">libuv</a> 进行构建的，底层是以 <code>C/C++</code> 实现，而标准库部分则是采用 <code>JS</code> 编写。所以 Node.js 的源码调试分为两部分，<code>C/C++</code> 代码调试和 <code>JS</code> 代码调试。<a href="https://yjhjstz.gitbooks.io/deep-into-node/chapter1/chapter1-0.html" target="_blank" rel="noopener">更多…</a></p>
+<p><a target="_blank" rel="noopener" href="https://nodejs.org">Node.js</a> 是基于 <a target="_blank" rel="noopener" href="https://github.com/v8/v8">V8</a> 和 <a target="_blank" rel="noopener" href="https://github.com/libuv/libuv">libuv</a> 进行构建的，底层是以 <code>C/C++</code> 实现，而标准库部分则是采用 <code>JS</code> 编写。所以 Node.js 的源码调试分为两部分，<code>C/C++</code> 代码调试和 <code>JS</code> 代码调试。<a target="_blank" rel="noopener" href="https://yjhjstz.gitbooks.io/deep-into-node/chapter1/chapter1-0.html">更多…</a></p>
 <h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><ol>
-<li>Node.js <a href="https://github.com/nodejs/node" target="_blank" rel="noopener">源码</a>一份</li>
-<li><a href="https://code.visualstudio.com/" target="_blank" rel="noopener">Visual Studio Code</a> 或其它调试 <code>C/C++</code>、<code>JS</code> 的 <code>调试器/IDE</code>。</li>
+<li>Node.js <a target="_blank" rel="noopener" href="https://github.com/nodejs/node">源码</a>一份</li>
+<li><a target="_blank" rel="noopener" href="https://code.visualstudio.com/">Visual Studio Code</a> 或其它调试 <code>C/C++</code>、<code>JS</code> 的 <code>调试器/IDE</code>。</li>
 </ol>
 <h2 id="开始调试"><a href="#开始调试" class="headerlink" title="开始调试"></a>开始调试</h2><h3 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h3><p>发行版本的 <code>Node</code> 是不支持调试的，所以我们需要自己通过源码构建一份可调试的 <code>Node</code>，<code>Node</code> 项目构建通过 <code>make</code> 进行管理，开发者们贴心的准备好了 <code>configure</code> 文件，所以构建一个自己定制版的 <code>Node</code> 非常方便。</p>
 <blockquote>
-<p><a href="https://github.com/nodejs/node/blob/master/BUILDING.md" target="_blank" rel="noopener">官方构建指南</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/nodejs/node/blob/master/BUILDING.md">官方构建指南</a></p>
 </blockquote>
 <h4 id="第一步：入口文件添加-debugger"><a href="#第一步：入口文件添加-debugger" class="headerlink" title="第一步：入口文件添加 debugger"></a>第一步：入口文件添加 debugger</h4><p>首先，进入到下载下来的 Node.js 源码仓库目录（之后的操作都在这个目录进行）。  </p>
 <p>修改 <code>JS</code> 源码入口文件(<code>./lib/internal/bootstrap/node.js</code>)文件中的内容，在头部加入 <code>debugger</code>。</p>
@@ -466,6 +481,7 @@ For help, see: https://nodejs.org/en/docs/inspector
 <blockquote>
 <p>注意：Visual Studio Code 需要打开一个项目时才能够创建配置文件</p>
 </blockquote>
+<p><img src="/images/vscode-debug-setting.png" alt=""></p>
 <p>在配置文件中填入如下内容：</p>
 <pre class="line-numbers language-json"><code class="language-json"><span class="token punctuation">{</span>
     // 使用 IntelliSense 了解相关属性。 
@@ -483,18 +499,18 @@ For help, see: https://nodejs.org/en/docs/inspector
 <span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>切记，记得进行保存。回到设置界面选择刚刚配置的 “Attact Program”，然后点击绿色的三角标开始，然后你就可以进入到 <code>Node.js</code> 源码中 <code>JS</code> 部分的调试了。</p>
-<p><img src="/images/vscode-debug-setting.png" alt=""></p>
 <p>之后每次改动你的代码的时候都记得执行以下 <code>build.sh</code> 重新执行编译。</p>
 <blockquote>
-<p>关于 vscode 中 JS 的更多调试姿势请看<a href="https://code.visualstudio.com/docs/editor/debugging" target="_blank" rel="noopener">这里</a></p>
+<p>关于 vscode 中 JS 的更多调试姿势请看<a target="_blank" rel="noopener" href="https://code.visualstudio.com/docs/editor/debugging">这里</a></p>
 </blockquote>
-<h3 id="调试-C-C-源码"><a href="#调试-C-C-源码" class="headerlink" title="调试 C/C++ 源码"></a>调试 C/C++ 源码</h3><h4 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h4><p><a href="https://code.visualstudio.com/" target="_blank" rel="noopener">Visual Studio Code</a> 默认是不支持 <code>C/C++</code> 调试的，需要安装对应的插件，打开 <a href="https://code.visualstudio.com/" target="_blank" rel="noopener">Visual Studio Code</a> 的插件商店，<br>搜索 <code>c++</code>，安装名为 <code>C/C++</code> 的官方插件</p>
+<h3 id="调试-C-C-源码"><a href="#调试-C-C-源码" class="headerlink" title="调试 C/C++ 源码"></a>调试 C/C++ 源码</h3><h4 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h4><p><a target="_blank" rel="noopener" href="https://code.visualstudio.com/">Visual Studio Code</a> 默认是不支持 <code>C/C++</code> 调试的，需要安装对应的插件，打开 <a target="_blank" rel="noopener" href="https://code.visualstudio.com/">Visual Studio Code</a> 的插件商店，<br>搜索 <code>c++</code>，安装名为 <code>C/C++</code> 的官方插件</p>
 <p><img src="/images/vscode-c-plugin.jpg" alt=""></p>
 <h4 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h4><p>同 JS 部分一样，打开安装好的 <code>Visual Studio Code</code> 打开你的项目</p>
 <p>点击左侧的蜘蛛标志，进入调试配置界面，然后点击右上角的配置按钮(打开目录下的 <code>.vscode/launch.json</code>)</p>
 <blockquote>
 <p>注意：Visual Studio Code 需要打开一个目录才能够创建配置文件</p>
 </blockquote>
+<p><img src="/images/vscode-debug-setting.png" alt=""></p>
 <p>在配置文件中填入如下内容：</p>
 <pre class="line-numbers language-json"><code class="language-json"><span class="token punctuation">{</span>
     // Use IntelliSense to learn about possible attributes.
@@ -517,18 +533,19 @@ For help, see: https://nodejs.org/en/docs/inspector
 <span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>切记，记得进行保存。</p>
-<p><img src="/images/vscode-debug-setting.png" alt=""></p>
 <p>然后用 IDE 在 <code>C/C++</code> 入口文件处 <code>./src/node_mian.cc</code> 打上 debugger 标识。<br>回到设置界面选择刚刚配置的 “Attact Program”，然后点击绿色的三角标开始，然后你就可以进入到 <code>Node.js</code> 源码中 <code>C/C++</code> 部分的调试了。</p>
 <p><img src="/images/vscode-c-debug.jpg" alt=""></p>
+<h5 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h5><p>如果你在使用的环境是 MacOs 的 Catalina 版本，你可能会遇到 C++ 部分调试的时候 <code>stopAtEntry</code> 没有生效的问题，那么你需要看一下这个官方的 issue</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/microsoft/vscode-cpptools/issues/3829">Can’t debug on macOS Catalina (LLDB)</a></p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li><a href="https://github.com/nodejs/node/blob/master/BUILDING.md" target="_blank" rel="noopener">Building Node.js</a></li>
-<li><a href="https://juejin.im/post/5a5cc0f4518825734216e166" target="_blank" rel="noopener">Node.js源码学习(1) 使用cLion调试node.js源码
+<li><a target="_blank" rel="noopener" href="https://github.com/nodejs/node/blob/master/BUILDING.md">Building Node.js</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.im/post/5a5cc0f4518825734216e166">Node.js源码学习(1) 使用cLion调试node.js源码
 </a></li>
-<li><a href="https://github.com/xtx1130/blog/issues/9" target="_blank" rel="noopener">node源码粗读（2）：node编译过程详解及如何在本地进行源码修改和调试</a></li>
-<li><a href="https://github.com/xtx1130/blog/issues/14" target="_blank" rel="noopener">node源码粗读（5）：通过调试./lib库的js代码来看javascript在node中运行环境的变化</a></li>
-<li><a href="https://yjhjstz.gitbooks.io/deep-into-node/chapter1/chapter1-0.html" target="_blank" rel="noopener">深入理解Node.js：核心思想与源码分析</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/36654741" target="_blank" rel="noopener">使用 Visual Studio Code 搭建 C/C++ 开发和调试环境</a></li>
-<li><a href="https://code.visualstudio.com/docs/languages/cpp" target="_blank" rel="noopener">C++ programming with Visual Studio Code</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/xtx1130/blog/issues/9">node源码粗读（2）：node编译过程详解及如何在本地进行源码修改和调试</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/xtx1130/blog/issues/14">node源码粗读（5）：通过调试./lib库的js代码来看javascript在node中运行环境的变化</a></li>
+<li><a target="_blank" rel="noopener" href="https://yjhjstz.gitbooks.io/deep-into-node/chapter1/chapter1-0.html">深入理解Node.js：核心思想与源码分析</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/36654741">使用 Visual Studio Code 搭建 C/C++ 开发和调试环境</a></li>
+<li><a target="_blank" rel="noopener" href="https://code.visualstudio.com/docs/languages/cpp">C++ programming with Visual Studio Code</a></li>
 </ul>
 <script>
         document.querySelectorAll('.github-emoji')
@@ -549,6 +566,7 @@ For help, see: https://nodejs.org/en/docs/inspector
             document.body.appendChild(img);
           });
       </script>
+                
             </div>
             <hr/>
 
@@ -563,7 +581,7 @@ For help, see: https://nodejs.org/en/docs/inspector
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://prerabale.github.io" rel="external nofollow noreferrer">prerabale</a>
+                    <a href="/about" rel="external nofollow noreferrer">prerabale</a>
                 </span>
             </div>
             <div class="reprint__type">
@@ -586,7 +604,7 @@ For help, see: https://nodejs.org/en/docs/inspector
                     本博客所有文章除特別声明外，均采用
                     <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
                     许可协议。转载请注明来源
-                    <a href="http://prerabale.github.io" target="_blank">prerabale</a>
+                    <a href="/about" target="_blank">prerabale</a>
                     !
                 </span>
             </div>
@@ -620,9 +638,8 @@ For help, see: https://nodejs.org/en/docs/inspector
                 </div>
                 <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
                     <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
-
 <div id="article-share">
-    
+
     
     <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
     <script src="/libs/share/js/social-share.min.js"></script>
@@ -643,7 +660,7 @@ For help, see: https://nodejs.org/en/docs/inspector
 <link rel="stylesheet" href="/css/my-gitalk.css">
 
 <div class="card gitalk-card" data-aos="fade-up">
-    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; left: 20px; top: 15px; padding-bottom: 5px;">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
         <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
         <span>评论</span>
     </div>
@@ -664,6 +681,11 @@ For help, see: https://nodejs.org/en/docs/inspector
 
     gitalk.render('gitalk-container');
 </script>
+
+    
+
+    
+
     
 
     
@@ -697,10 +719,6 @@ For help, see: https://nodejs.org/en/docs/inspector
                     <div class="summary block-with-text">
                         
                             
-任何信息的价值都有时效性和适用性，本文写时 Node.js 的最新发行版是 v11.14.0，稳定版本是 v10.15.3，文中出现的源码均来自 tag: v11.14.0。使用的电脑环境是：macOs 10.14.2。
-
-前言
-Node
                         
                     </div>
                     <div class="publish-info">
@@ -711,8 +729,8 @@ Node
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/JS/" class="post-category">
-                                    JS
+                            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
+                                    前端
                                 </a>
                             
                             
@@ -735,40 +753,48 @@ Node
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+                本篇&nbsp;<i class="far fa-dot-circle"></i>
             </div>
             <div class="card">
-                <a href="/2018/12/26/monad/">
+                <a href="/2019/04/19/node-js-yuan-ma-diao-shi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="Monad">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="Node.js 源码调试">
                         
-                        <span class="card-title">Monad</span>
+                        <span class="card-title">Node.js 源码调试</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            文章尚在整理中，可以先查看本文章的ppt。
-附录结语：我没有生产水，只是大自然的搬运工。
-
-Haskell(是一种标准化的，通用的纯函数编程语言，有非限定性语义和强静态类型)
-图解 Monad
-Functors, Applicatives,
+                            
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2018-12-26
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-04-19
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            吴良伟
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
+                                    前端
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Node-js/">
+                        <span class="chip bg-color">Node.js</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -836,12 +862,9 @@ Functors, Applicatives,
 <script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
 
 
-<!-- 代码块折行 -->
-
-
     </div>
     <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
-        <div class="toc-widget">
+        <div class="toc-widget card" style="background-color: white;">
             <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
             <div id="toc-content"></div>
         </div>
@@ -939,9 +962,39 @@ Functors, Applicatives,
 
 
 
+
     <footer class="page-footer bg-color">
     
         <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
 <div class="">
     
     <div class="row">
@@ -951,7 +1004,7 @@ Functors, Applicatives,
                    id="503838841"
                    fixed='true'
                    autoplay='false'
-                   theme:='#42b983'
+                   theme='#42b983'
                    loop='all'
                    order='random'
                    preload='auto'
@@ -969,8 +1022,11 @@ Functors, Applicatives,
     <div class="container row center-align" style="margin-bottom: 0px !important;">
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2020</span>
+            
             <span id="year">2019</span>
-            <a href="http://prerabale.github.io" target="_blank">prerabale</a>
+            <a href="/about" target="_blank">prerabale</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             <br>
@@ -1013,6 +1069,10 @@ Functors, Applicatives,
 
 
 
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=907851332" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 907851332" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
 
 
 
@@ -1042,12 +1102,98 @@ Functors, Applicatives,
     </div>
 </div>
 
-<script src="/js/search.js"></script>
 <script type="text/javascript">
 $(function () {
-    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
 });
 </script>
+
     <!-- 回到顶部按钮 -->
 <div id="backTop" class="top-scroll">
     <a class="btn-floating btn-large waves-effect waves-light" href="#!">
@@ -1062,9 +1208,6 @@ $(function () {
     <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
     <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
     <script src="/js/matery.js"></script>
-
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-
 
     <!-- Baidu Analytics -->
 
@@ -1085,8 +1228,6 @@ $(function () {
 </script>
 
     
-    <script src="/libs/others/clicklove.js" async="async"></script>
-    
     
     <script async src="/libs/others/busuanzi.pure.mini.js"></script>
     
@@ -1095,12 +1236,14 @@ $(function () {
 
     
 
+    <!--腾讯兔小巢-->
+    
     
 
     
 
     
-    
+
     
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
