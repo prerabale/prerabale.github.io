@@ -1,6 +1,7 @@
 title: 在 React 中用 ts 做路由跳转的检查
 author: prerabale
 tags:
+
   - Typescript
   - ''
   - React
@@ -8,6 +9,10 @@ categories:
   - 前端
 date: 2020-12-18 14:14:00
 ---
+### 示例
+
+
+
 ### 为什么需要
 
 我们访问页面的时候，需要知道目标页面的**地址**（`pathname`）和特定的**参数**（`search`、`hash`），然后拼装成完整的 `url` 才能够正常的进行访问。
@@ -35,6 +40,7 @@ date: 2020-12-18 14:14:00
 
 ```typescript
 history.push('/pages/a?id=1')
+
 ```
 
 进行路由跳转。
@@ -44,67 +50,7 @@ history.push('/pages/a?id=1')
 例如：
 
 ```typescript
-type hour =
-  | '00'
-  | '01'
-  | '02'
-  | '03'
-  | '04'
-  | '05'
-  | '06'
-  | '07'
-  | '08'
-  | '09'
-  | '10'
-  | '11'
-  | '12'
-  | '13'
-  | '14'
-  | '15'
-  | '16'
-  | '17'
-  | '18'
-  | '19'
-  | '20'
-  | '21'
-  | '22'
-  | '23'
-  | '24'
-  | '25'
-  | '26'
-  | '27'
-  | '28'
-  | '29'
-  | '30'
-  | '31'
-  | '32'
-  | '33'
-  | '34'
-  | '35'
-  | '36'
-  | '37'
-  | '38'
-  | '39'
-  | '40'
-  | '41'
-  | '42'
-  | '43'
-  | '44'
-  | '45'
-  | '46'
-  | '47'
-  | '48'
-  | '49'
-  | '50'
-  | '51'
-  | '52'
-  | '53'
-  | '54'
-  | '55'
-  | '56'
-  | '57'
-  | '58'
-  | '59'
+type hour = '00' | '01' | '02' | '03' | '04' | '05' | '06' | '07' | '08' | '09' | '10' | '11' | '12' | '13' | '14' | '15' | '16' | '17' | '18' | '19' | '20' | '21' | '22' | '23' | '24' | '25' | '26' | '27' | '28' | '29' | '30' | '31' | '32' | '33' | '34' | '35' | '36' | '37' | '38' | '39' | '40' | '41' | '42' | '43' | '44' | '45' | '46' | '47' | '48' | '49' | '50' | '51' | '52' | '53' | '54' | '55' | '56' | '57' | '58' | '59'
 
 type minute = hour
 
@@ -128,7 +74,7 @@ history.push('/pages/a?name=2&id=1')
 
 所以，我们得另辟蹊径
 
-#### 第一步: 拆分 pathname 和参数
+#### 第一步：拆分 pathname 和参数
 
 为了方便校验，这里我们把 `pathname` 和 `参数` 区分开来，统一封装一个 `navigateTo` 方法（底层还是调用的 `history.push`）。
 
@@ -136,7 +82,7 @@ history.push('/pages/a?name=2&id=1')
 navigateTo({
   url: '/pages/a',
   query: {
-	id: 1
+	  id: 1
   },
   state: {}
 })
@@ -145,7 +91,7 @@ navigateTo({
 navigateTo('/pages/a', query, state)
 ```
 
-##### 第二步：校验 pathname 是否存在
+#### 第二步：校验 pathname 是否存在
 
 首先想到可以利用 `ts` 中的 [联合类型](https://www.typescriptlang.org/docs/handbook/unions-and-intersections.html#union-types) 和 [枚举](https://www.typescriptlang.org/docs/handbook/enums.html)来进行校验。
 
@@ -167,7 +113,7 @@ type pageType = '/pages/a' | '/pages/b'
 // TS2322: Type '"/s"' is not assignable to type 'pageType'.
 const pageB: pageType = '/s'
 ```
-##### 第三步：校验参数类型
+#### 第三步：校验参数类型
 
 参数的校验思路就很明确了，无论是 `interface` 还是 `type` 的校验都可以。
 
